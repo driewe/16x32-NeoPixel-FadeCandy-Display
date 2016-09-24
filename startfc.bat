@@ -1,0 +1,1 @@
+.\bin\fcserver.exe .\fadecandyserver.json

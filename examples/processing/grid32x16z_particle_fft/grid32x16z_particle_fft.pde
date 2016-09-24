@@ -1,7 +1,9 @@
 // Some real-time FFT! This visualizes music in the frequency domain using a
 // polar-coordinate particle system. Particle size and radial distance are modulated
 // using a filtered FFT. Color is sampled from an image.
-
+//
+// https://github.com/ddf/Minim
+//
 import ddf.minim.analysis.*;
 import ddf.minim.*;
 
@@ -13,7 +15,28 @@ AudioPlayer sound;
 FFT fft;
 float[] fftFilter;
 
-String filename = "/Users/micah/Dropbox/music/Mark Farina - Mushroom Jazz Vol 5.mp3";
+String filename = "/Users/david/OneDrive/FadeCandy/musicforbirds/01-01- Birds of a Feather.mp3";
+String filenames [] = { "/Users/david/OneDrive/FadeCandy/musicforbirds/01-01- Birds of a Feather.mp3",            
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-02- Wings That Sing.mp3",                
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-03- Parrot Talk.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-04- Birds and the Bees.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-05- Shake Your Tail Feathers.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-06- Classical Cockatoo.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-07- Birds Eye View.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-08- Flying High.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-09- Nightingales.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-10- Feather Elise.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-11- Songbirds.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-12- Wild Winged Wonder.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-13- I Tawt I Taw a Puddy Tat.mp3",
+                        "/Users/david/OneDrive/FadeCandy/musicforbirds/01-14- The Amazon.mp3",       
+                        "/Users/david/OneDrive/FadeCandy/AeroSmith/01-06- Train Kept a Rollin.mp3",    // 14
+                        "/Users/david/OneDrive/FadeCandy/BahaMen/01-01- Who Let the Dogs Out.mp3",
+                        "/Users/david/OneDrive/FadeCandy/BachFamousOrganWorks/01-07- Bach Prelude & Fugue In A Minor, BWV 543.mp3",
+                        "/Users/david/OneDrive/FadeCandy/BachFamousOrganWorks/01-11- Bach Fantasia & Fugue In G Minor, BWV 542, Great G Minor.mp3",
+                        "/Users/david/OneDrive/FadeCandy/BachFamousOrganWorks/02-01- Bach Toccata & Fugue In D Minor, BWV 565.mp3",
+                        "/Users/david/OneDrive/FadeCandy/Mamas&Pappas/01-04- California Dreamin.mp3"};
+
 
 float spin = 0.001;
 float radiansPerBucket = radians(2);
@@ -21,6 +44,7 @@ float decay = 0.97;
 float opacity = 50;
 float minSize = 0.1;
 float sizeScale = 0.6;
+int songindex = 15;
 
 void setup()
 {
@@ -29,7 +53,7 @@ void setup()
   minim = new Minim(this); 
 
   // Small buffer size!
-  sound = minim.loadFile(filename, 512);
+  sound = minim.loadFile(filenames[songindex], 512);
   sound.loop();
   fft = new FFT(sound.bufferSize(), sound.sampleRate());
   fftFilter = new float[fft.specSize()];
@@ -40,14 +64,14 @@ void setup()
   // Connect to the local instance of fcserver
   opc = new OPC(this, "127.0.0.1", 7890);
 
-  opc.ledGrid8x8(0 * 64, width * 1/8, height * 1/4, height/16, 0, true);
-  opc.ledGrid8x8(1 * 64, width * 3/8, height * 1/4, height/16, 0, true);
-  opc.ledGrid8x8(2 * 64, width * 5/8, height * 1/4, height/16, 0, true);
-  opc.ledGrid8x8(3 * 64, width * 7/8, height * 1/4, height/16, 0, true);
-  opc.ledGrid8x8(4 * 64, width * 1/8, height * 3/4, height/16, 0, true);
-  opc.ledGrid8x8(5 * 64, width * 3/8, height * 3/4, height/16, 0, true);
-  opc.ledGrid8x8(6 * 64, width * 5/8, height * 3/4, height/16, 0, true);
-  opc.ledGrid8x8(7 * 64, width * 7/8, height * 3/4, height/16, 0, true);
+  opc.ledGrid8x8(0 * 64, width * 1/8, height * 1/4, height/16, 0, false);
+  opc.ledGrid8x8(1 * 64, width * 3/8, height * 1/4, height/16, 0, false);
+  opc.ledGrid8x8(2 * 64, width * 5/8, height * 1/4, height/16, 0, false);
+  opc.ledGrid8x8(3 * 64, width * 7/8, height * 1/4, height/16, 0, false);
+  opc.ledGrid8x8(4 * 64, width * 1/8, height * 3/4, height/16, 0, false);
+  opc.ledGrid8x8(5 * 64, width * 3/8, height * 3/4, height/16, 0, false);
+  opc.ledGrid8x8(6 * 64, width * 5/8, height * 3/4, height/16, 0, false);
+  opc.ledGrid8x8(7 * 64, width * 7/8, height * 3/4, height/16, 0, false);
 }
 
 void draw()

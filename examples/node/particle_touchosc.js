@@ -11,7 +11,7 @@ var osc = require('node-osc');
 var oscServer = new osc.Server(8000, '0.0.0.0');
 
 var OPC = new require('./opc');
-var model = OPC.loadModel(process.argv[2] || '../layouts/grid32x16z.json');
+var model = OPC.loadModel(process.argv[2] || '../layouts/grid32x16.json');
 var client = new OPC('localhost', 7890);
 
 // State values; change over time

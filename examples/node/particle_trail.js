@@ -4,7 +4,7 @@
 // Specify a layout file on the command line, or use the default (grid32x16z)
 
 var OPC = new require('./opc');
-var model = OPC.loadModel(process.argv[2] || '../layouts/grid32x16z.json');
+var model = OPC.loadModel(process.argv[2] || '../layouts/grid32x16.json');
 var client = new OPC('localhost', 7890);
 
 function draw() {
