@@ -44,7 +44,7 @@ float decay = 0.97;
 float opacity = 50;
 float minSize = 0.1;
 float sizeScale = 0.6;
-int songindex = 15;
+int songindex = 0;
 
 void setup()
 {
@@ -62,7 +62,8 @@ void setup()
   colors = loadImage("colors.png");
 
   // Connect to the local instance of fcserver
-  opc = new OPC(this, "127.0.0.1", 7890);
+  //opc = new OPC(this, "127.0.0.1", 7890);
+  opc = new OPC(this, "192.168.1.9", 7890);
 
   opc.ledGrid8x8(0 * 64, width * 1/8, height * 1/4, height/16, 0, false);
   opc.ledGrid8x8(1 * 64, width * 3/8, height * 1/4, height/16, 0, false);

@@ -12,7 +12,8 @@ var oscServer = new osc.Server(8000, '0.0.0.0');
 
 var OPC = new require('./opc');
 var model = OPC.loadModel(process.argv[2] || '../layouts/grid32x16.json');
-var client = new OPC('localhost', 7890);
+//var client = new OPC('localhost', 7890);
+var client = new OPC('192.168.1.9', 7890);
 
 // State values; change over time
 var stateAngle1 = 0;
