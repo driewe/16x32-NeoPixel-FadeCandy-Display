@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Fadecandy by driewe</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/driewe/fadecandy">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Fadecandy</h1>
+            <h2>Easy to use open source hardware to drive WS2811 LEDs with high-quality color</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/driewe/fadecandy/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/driewe/fadecandy/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <p><img src="https://raw.github.com/scanlime/fadecandy/master/doc/images/fc-title.png" alt="Fadecandy Title"></p>
+
+<p>Fadecandy is a project that makes LED art easier, tastier, and more creative. We're all about creating tools that remove the technical drudgery from making LED art, freeing you to do more interesting, nuanced, and creative things. We think LEDs are more than just trendy display devices, we think of them as programmable light for interactive art.</p>
+
+<ul>
+<li><a href="https://vimeo.com/79935649">Video Introduction to Fadecandy</a></li>
+<li><a href="https://www.youtube.com/watch?v=-4AUBjV7Y-w">Introduction by Nick Poole from Spark Fun Electronics</a></li>
+<li><a href="https://learn.adafruit.com/led-art-with-fadecandy">Tutorial: LED Art with Fadecandy</a></li>
+<li><a href="https://learn.adafruit.com/1500-neopixel-led-curtain-with-raspberry-pi-fadecandy/">Tutorial: 1,500 NeoPixel LED Curtain with Raspberry Pi and Fadecandy</a></li>
+<li><a href="http://www.misc.name/easier-and-tastier-led-art-with-fadecandy/">Presentation slides: Easier and Tastier LED Art with Fadecandy</a></li>
+<li><a href="http://stimulant.com/led-interaction-research/">LED Interaction Research with Fadecandy at Stimulant labs</a></li>
+</ul>
+
+<p>Buy a Fadecandy Controller board:</p>
+
+<ul>
+<li><a href="http://www.adafruit.com/products/1689">Adafruit</a></li>
+<li><a href="http://rgb-123.com/product/fadecandy/">RGB-123</a></li>
+</ul>
+
+<p><a href="https://gitter.im/scanlime/fadecandy?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/scanlime/fadecandy"></a></p>
+
+<h2>
+<a id="simple-example" class="anchor" href="#simple-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple Example</h2>
+
+<p>Here's a simple project, a single LED strip controlled by a Processing sketch running on your laptop:</p>
+
+<p><img src="https://raw.github.com/scanlime/fadecandy/master/doc/images/system-diagram-1.png" alt="Fadecandy system diagram 1"></p>
+
+<pre><code>// Simple Processing sketch for controlling a 64-LED strip.
+// A glowing color-blob appears on the strip under mouse control.
+
+OPC opc;
+PImage dot;
+
+void setup()
+{
+  size(800, 200);
+
+  // Load a sample image
+  dot = loadImage("color-dot.png");
+
+  // Connect to the local instance of fcserver
+  opc = new OPC(this, "127.0.0.1", 7890);
+
+  // Map one 64-LED strip to the center of the window
+  opc.ledStrip(0, 64, width/2, height/2, width / 70.0, 0, false);
+}
+
+void draw()
+{
+  background(0);
+
+  // Draw the image, centered at the mouse location
+  float dotSize = width * 0.2;
+  image(dot, mouseX - dotSize/2, mouseY - dotSize/2, dotSize, dotSize);
+}
+</code></pre>
+
+<h2>
+<a id="a-more-complex-example" class="anchor" href="#a-more-complex-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>A More Complex Example</h2>
+
+<p>Fadecandy is also useful for larger projects with many thousands of LEDs, and it's useful for art that runs on embedded computers like the Raspberry Pi:</p>
+
+<p><img src="https://raw.github.com/scanlime/fadecandy/master/doc/images/system-diagram-2.png" alt="Fadecandy system diagram 2"></p>
+
+<h2>
+<a id="project-scope" class="anchor" href="#project-scope" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Scope</h2>
+
+<p>This project is a collection of reusable pieces you can take or leave. The overall goal of making LED art easier, tastier, and more creative is a broad one. To keep this project manageable to start with, there are some rough limitations on what's supported:</p>
+
+<ul>
+<li>LED strips, grids, and other modules based on the WS2811 or WS2812 chip.
+
+<ul>
+<li>Common and inexpensive, available from <a href="http://www.aliexpress.com/item/5M-WS2811-LED-digital-strip-60leds-m-with-60pcs-WS2811-built-in-tthe-5050-smd-rgb/635563383.html?tracelog=back_to_detail_a">many suppliers</a> for around $0.25 per pixel.</li>
+</ul>
+</li>
+<li>Something with a USB host port that can run your art.
+
+<ul>
+<li>Laptops and Mac Minis work great</li>
+<li>The Raspberry Pi is also a great platform for this, but it requires more technical skill</li>
+</ul>
+</li>
+<li>Distances of no more than 60ft or so between your computer and your farthest LEDs
+
+<ul>
+<li>USB cables &lt; 50ft</li>
+<li>WS2811 data cables &lt; 10ft</li>
+</ul>
+</li>
+<li>No more than about 10000 LED pixels total
+
+<ul>
+<li>There's no hard limit, but it gets more difficult after this point.</li>
+</ul>
+</li>
+</ul>
+
+<p>These are fuzzy limitations based on current software capabilities and rough electrical limits, so you may be able to stretch them. But this gives you an idea about the kind of art we try to support. Projects are generally larger than wearables, but smaller than entire buildings.</p>
+
+<p>For example, the first project to use Fadecandy was the <a href="http://scanlime.org/2013/09/the-ardent-mobile-cloud-platform/">Ardent Mobile Cloud Platform</a> at Burning Man 2013. This project used one Raspberry Pi, five Fadecandy controller boards, and 2500 LEDs.</p>
+
+<p>Fadecandy makes no assumptions about how you generate control patterns for the LEDs. You can generate a 2D video and sample pixels from the video, you can make a 3D model of your sculpture and sample a 3D <em>shader</em> for your pixel values, or you can create a unique system specifically for your art.</p>
+
+<h2>
+<a id="fadecandy-controller" class="anchor" href="#fadecandy-controller" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fadecandy Controller</h2>
+
+<p>The centerpiece of the Fadecandy project is a controller board which can drive up to 512 LEDs (as 8 strings of 64) over USB. Many Fadecandy boards can be attached to the same computer using a USB hub or a chain of hubs.</p>
+
+<p>Fadecandy makes it easy to drive these LEDs from anything with USB, and it includes unique algorithms which eliminate many of the common visual glitches you see when using these LEDs.</p>
+
+<p>The LED drive engine is based on Stoffregen's excellent <a href="http://www.pjrc.com/teensy/td_libs_OctoWS2811.html">OctoWS2811</a> library, which pumps out serial data for these LED strips entirely using DMA. This firmware builds on Paul's work by adding:</p>
+
+<ul>
+<li>A high performance USB protocol</li>
+<li>Zero copy architecture with triple-buffering</li>
+<li>Interpolation between keyframes</li>
+<li>Gamma and color correction with per-channel lookup tables</li>
+<li>Temporal dithering</li>
+<li>A custom PCB with line drivers and a 5V boost converter</li>
+<li>A fully open source bootloader</li>
+</ul>
+
+<p>These features add up to give <em>very smooth</em> fades and high dynamic range. Ever notice that annoying stair-stepping effect when fading LEDs from off to dim? Fadecandy avoids that using a form of <a href="http://en.wikipedia.org/wiki/Delta-sigma_modulation">delta-sigma modulation</a>. It rapidly wiggles each pixel's value up or down by one 8-bit step, in order to achieve 16-bit resolution for fades.</p>
+
+<h2>
+<a id="vitals" class="anchor" href="#vitals" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vitals</h2>
+
+<ul>
+<li>512 pixels supported per Teensy board (8 strings, 64 pixels per string)</li>
+<li>Very high hardware frame rate (~400 FPS) to support temporal dithering</li>
+<li>Full-speed (12 Mbps) USB</li>
+<li>257x3-entry 16-bit color lookup table, for gamma correction and color balance</li>
+</ul>
+
+<h2>
+<a id="platform" class="anchor" href="#platform" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Platform</h2>
+
+<p>Fadecandy uses the Freescale MK20DX128 microcontroller, the same one used by the <a href="http://www.pjrc.com/store/teensy3.html">Teensy 3.0</a> board. Fadecandy includes its own PCB design featuring a robust power supply and level shifters. It also includes an open source bootloader compatible with the USB Device Firmware Update spec.</p>
+
+<p>You can use Fadecandy either as a full hardware platform or as firmware for the Teensy 3.0 board.</p>
+
+<h2>
+<a id="color-processing" class="anchor" href="#color-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Color Processing</h2>
+
+<p>Fadecandy internally represents colors with 16 bits of precision per channel, or 48 bits per pixel. Why 48-bit color? In combination with our dithering algorithm, this gives a lot more color resolution. It's especially helpful near the low end of the brightness range, where stair-stepping and color <em>popping</em> artifacts can be most apparent.</p>
+
+<p>Each pixel goes through the following processing steps in Fadecandy:</p>
+
+<ul>
+<li>8 bit per channel framebuffer values are expanded to 16 bits per channel</li>
+<li>We interpolate smoothly from the old framebuffer values to the new framebuffer values</li>
+<li>This interpolated 16-bit value goes through the color LUT, which itself is linearly interpolated</li>
+<li>The final 16-bit value is fed into our temporal dithering algorithm, which results in an 8-bit color</li>
+<li>These 8-bit colors are converted to the format needed by OctoWS2811's DMA engine</li>
+<li>In hardware, the converted colors are streamed out to eight LED strings in parallel</li>
+</ul>
+
+<p>The color lookup tables can be used to implement gamma correction, brightness and contrast, and white point correction. Each channel (RGB) has a 257 entry table. Each entry is a 16-bit intensity. Entry 0 corresponds to the 16-bit color 0x0000, entry 1 corresponds to 0x0100, etc. The 257th entry corresponds to 0x10000, which is just past the end of the 16-bit intensity space.</p>
+
+<h2>
+<a id="keyframe-interpolation" class="anchor" href="#keyframe-interpolation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Keyframe Interpolation</h2>
+
+<p>By default, Fadecandy interprets each frame it receives as a keyframe. In-between these keyframes, Fadecandy will generate smooth intermediate frames using linear interpolation. The interpolation duration is determined by the elapsed time between when the final packet of one frame is received and when the final packet of the next frame is received.</p>
+
+<p>This scheme works well when frames are arriving at a nearly constant rate. If frames suddenly arrive slower than they had been arriving, interpolation will proceed faster than it optimally should, and one keyframe will hold steady until the next keyframe arrives. If frames suddenly arrive faster than they had been arriving, Fadecandy will need to jump ahead in order to avoid falling behind.</p>
+
+<p>This keyframe interpolation is not intended as a substitute for other forms of animation control. It is intended to generate high-framerate video from a source that operates at typical video framerates.</p>
+
+<h2>
+<a id="open-pixel-control-server" class="anchor" href="#open-pixel-control-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Open Pixel Control Server</h2>
+
+<p>The Fadecandy project includes an <a href="http://openpixelcontrol.org/">Open Pixel Control</a> server which can drive multiple Fadecandy boards and DMX adaptors. USB devices may be hotplugged while the server is up, and the server uses a JSON configuration file to map OPC messages to individual Fadecandy boards and DMX devices.</p>
+
+<p>Why use Open Pixel Control?</p>
+
+<ul>
+<li>You can keep your effects code portable among different lighting controllers.</li>
+<li>OPC includes an OpenGL-based simulator, allowing you to develop effects before the hardware is done.</li>
+<li>The OPC server manages USB hotplug and multi-device synchronization, so you don't have to.</li>
+<li>The OPC server loads color-correction data into each Fadecandy board.</li>
+</ul>
+
+<h2>
+<a id="websockets-server" class="anchor" href="#websockets-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WebSockets Server</h2>
+
+<p>In addition to Open Pixel Control, <code>fcserver</code> also supports WebSockets, so you can write LED art algorithms and utilities in Javascript using the plethora of libraries and tools available on that platform. LED art can be easily integrated with any input device or library that will run in the browser or Node.</p>
+
+<h2>
+<a id="browser-ui" class="anchor" href="#browser-ui" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser UI</h2>
+
+<p>When you run <code>fcserver</code>, it also gives you a simple browser-based UI for identifying the attached Fadecandy Controllers and quickly testing your lights. By default, this UI runs on <a href="http://localhost:7890">http://localhost:7890</a>.</p>
+
+<p><img src="https://raw.github.com/scanlime/fadecandy/master/doc/images/web-ui-screenshot.png" alt="Browser UI Screenshot"></p>
+
+<h2>
+<a id="where-to" class="anchor" href="#where-to" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Where to?</h2>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=-4AUBjV7Y-w">Video introduction by Nick Poole from Spark Fun Electronics</a></li>
+<li>Tutorial: <a href="https://learn.adafruit.com/led-art-with-fadecandy">"LED Art with Fadecandy"</a>
+</li>
+<li>Sample projects are in <a href="https://github.com/scanlime/fadecandy/tree/master/examples">examples</a>
+</li>
+<li>Pre-compiled binaries are in <a href="https://github.com/scanlime/fadecandy/tree/master/bin">bin</a>
+</li>
+<li>More documentation is included in <a href="https://github.com/scanlime/fadecandy/tree/master/doc">doc</a>
+
+<ul>
+<li><a href="https://github.com/scanlime/fadecandy/blob/master/doc/fc_protocol_opc.md">Open Pixel Control Protocol</a></li>
+<li><a href="https://github.com/scanlime/fadecandy/blob/master/doc/fc_protocol_websocket.md">WebSocket Protocol</a></li>
+<li><a href="https://github.com/scanlime/fadecandy/blob/master/doc/fc_protocol_usb.md">USB Protocol</a></li>
+<li><a href="https://github.com/scanlime/fadecandy/blob/master/doc/processing_opc_client.md">Processing OPC Client</a></li>
+<li><a href="https://github.com/scanlime/fadecandy/blob/master/doc/fc_server_config.md">Server Configuration</a></li>
+<li>...or if you still have questions, ask the <a href="https://groups.google.com/forum/#!forum/fadecandy">discussion group</a>
+</li>
+</ul>
+</li>
+<li>Buy a Fadecandy Controller board
+
+<ul>
+<li><a href="http://www.adafruit.com/products/1689">Adafruit</a></li>
+<li><a href="http://rgb-123.com/product/fadecandy/">RGB-123</a></li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="frequently-asked-questions" class="anchor" href="#frequently-asked-questions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Frequently Asked Questions</h2>
+
+<h3>
+<a id="why-cant-you-use-more-than-64-leds-per-strip" class="anchor" href="#why-cant-you-use-more-than-64-leds-per-strip" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why can't you use more than 64 LEDs per strip?</h3>
+
+<p>This limit comes from the data rate of the WS2811 LED controller's protocol (800 kbps) and the frame rate that seems to be needed to get the best results from our temporal dithering algorithm (about 400 FPS).</p>
+
+<p>With the WS2811 protocol, each bit takes 1.25 microseconds to transmit, and there's a 50 microsecond reset state that happens once per frame. Each LED has 24 bits of data. We can use this to relate number of LEDs to frames per second:</p>
+
+<pre><code>(a)   fps = 1 / ( 0.00000125 * 24 * numLEDs + 0.00005 )
+(b)   numLEDs = floor( (1 / fps - 0.00005) / 0.00000125 / 24 )
+</code></pre>
+
+<p>Equation (a) tells us that the theoretical maximum frame rate for 64 LEDs is 507.6 FPS. The Fadecandy Controller actually gets more like 425 FPS most of the time, since the CPU speed tends to be the limiting factor. With Equation (b), we can see that a theoretical strip length of 81 would still let us get 403 FPS. So why did I choose 64 instead of 81? Powers of two, mostly, and I honestly chose the limit of 64 before I knew exactly what frame rates would be necessary.</p>
+
+<p>It would be possible to drive LED strips of around 80 LEDs in length with the same quality using a slightly more powerful microcontroller, as long as we don't rely on the strip length to be a power of two.</p>
+
+<h3>
+<a id="will-fadecandy-work-on-the-teensy-31-board" class="anchor" href="#will-fadecandy-work-on-the-teensy-31-board" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Will Fadecandy work on the Teensy 3.1 board?</h3>
+
+<p>Currently, no. The Teensy 3.1 uses a different microcontroller with a slightly different memory layout which would make it impractical to have one firmware image that's binary-compatible with both the Teensy 3.1 and the Teensy 3.0 / Fadecandy Controller board. This is a thing that's certainly doable, but I haven't wanted to spend the extra maintenance effort to maintain and test a binary image for a second architecture.</p>
+
+<p>If anyone reading is passionate about supporting the Teensy 3.1 and would volunteer to maintain a port, I'd be happy to point you toward the modifications that would be necessary.</p>
+
+<h3>
+<a id="would-fadecandy-be-able-to-take-advantage-of-the-additional-processing-power-on-the-teensy-31s-microcontroller" class="anchor" href="#would-fadecandy-be-able-to-take-advantage-of-the-additional-processing-power-on-the-teensy-31s-microcontroller" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Would Fadecandy be able to take advantage of the additional processing power on the Teensy 3.1's microcontroller?</h3>
+
+<p>A little bit, maybe! But it wouldn't be a dramatic improvement, if we wanted to keep the exact same quality of dithering.</p>
+
+<p>With some extra processing power and RAM, the strip length limit could be increased from 64 to around 80. This is hardly a dramatic increase, though. The intrinsic limits explained above are more of a factor in the design than the CPU or RAM limits.</p>
+
+<h3>
+<a id="can-you-use-multiple-fadecandy-controllers-at-once" class="anchor" href="#can-you-use-multiple-fadecandy-controllers-at-once" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Can you use multiple Fadecandy controllers at once?</h3>
+
+<p>Yes! You can use USB hubs to connect many Fadecandy boards to one controller.</p>
+
+<h3>
+<a id="what-are-the-limits-how-big-can-fadecandy-go" class="anchor" href="#what-are-the-limits-how-big-can-fadecandy-go" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What are the limits? How big can Fadecandy go?</h3>
+
+<p>Fadecandy limits include USB bus bandwidth, Open Pixel Control packet size, and CPU power. </p>
+
+<p>USB Bus bandwidth will start to be a problem around a dozen Fadecandy boards per USB host controller. This may start to depend on the details of the computer you're using. On a laptop, each USB port will usually have an independent allocation of bandwidth available. So, connect the first dozen Fadecandy boards to one USB port, then the second dozen to another USB port, etc. If you do connect more than the recommended number of Fadecandy controllers to one port they'll still work, but frame rate will start to decrease.</p>
+
+<p>The <a href="http://openpixelcontrol.org/">Open Pixel Control</a> protocol used by Fadecandy has a packet size limit of 64 kilobytes, or 21845 LEDs. Any more than that will require workarounds, such as extending the OPC protocol or using multiple OPC channels.</p>
+
+<p>And then there's CPU power... these limits will depend on the language and framework your code uses, and what kind of computer you're running from. A large installation with 10,000 LEDs will probably need to run off of a laptop or Mac Mini unless your code is quite efficient. Smaller installations with up to 1000 LEDs or so could run off of something as small as a Raspberry Pi. But these are very broad generalizations, and this all depends on how much processing you need to perform per-LED. Keep in mind the scalability levels of your particular framework when you plan to build a large installation.</p>
+
+<h3>
+<a id="the-raspberry-pi-is-kind-of-slow-what-other-small-embedded-linux-computers-are-available" class="anchor" href="#the-raspberry-pi-is-kind-of-slow-what-other-small-embedded-linux-computers-are-available" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Raspberry Pi is kind of slow. What other small embedded Linux computers are available?</h3>
+
+<p>There are a lot of options to choose from, but my current favorite is the <a href="http://www.hardkernel.com/main/products/prdt_info.php?g_code=G138745696275">ODROID-U3</a>. It's about the same size as a Raspberry Pi, with a 1.7 GHz quad-core ARM. There's an optional fan add-on, but I haven't found it to be necessary yet.</p>
+
+<h3>
+<a id="im-using-windows-7-and-the-driver-for-fadecandy-doesnt-load-what-can-i-do" class="anchor" href="#im-using-windows-7-and-the-driver-for-fadecandy-doesnt-load-what-can-i-do" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>I'm using Windows 7, and the driver for Fadecandy doesn't load. What can I do?</h3>
+
+<p>Make sure you have all available Windows updates installed. Fadecandy uses a Windows feature (<a href="https://github.com/pbatard/libwdi/wiki/WCID-Devices">WCID</a>) that wasn't present in the original retail version of Windows 7, but it was added in a subsequent update.</p>
+
+<p>For reference, this is a 
+<a href="http://imgur.com/a/0MAFR">series of screenshots</a> showing a Fadecandy controller attached to a freshly installed Windows 7 Home Professional 32-bit virtual machine. At first it fails (no driver for "Fadecandy") but after updating Windows, it finds the correct device (WinUSB) and fcserver connects to it.</p>
+
+<p>If that doesn't fix it, you may have a version of Windows with an inexplicably broken <code>WinUSB</code> driver. The French version of Windows 7 SP1 seems to be afflicted by this bug, and possibly others. As a workaround, you can use the <a href="http://zadig.akeo.ie/">Zadig</a> utility to manually install an alternative driver. Use the arrows to change the driver on the right side of the arrow from <code>WinUSB</code> to <code>libusbK</code>, then click "Install Driver". You can see a <a href="http://imgur.com/a/25V81">series of screenshots</a> illustrating this.</p>
+
+<p>If you're still having trouble, please ask for help on the <a href="https://groups.google.com/forum/#!forum/fadecandy">discussion group</a> or <a href="https://github.com/scanlime/fadecandy/issues">bug tracker</a> and we can get to the bottom of this problem together. Thanks for your patience!</p>
+
+<h2>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contact</h2>
+
+<p>Please direct questions to the <a href="https://groups.google.com/forum/#!forum/fadecandy">Discussion group</a>, it's full of smart and creative people who can help!</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/driewe">driewe</a> can be found on <a href="https://github.com/driewe/fadecandy">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
