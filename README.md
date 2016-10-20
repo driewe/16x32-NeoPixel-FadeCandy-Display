@@ -4,9 +4,10 @@ Fadecandy is a project that makes LED art easier, tastier, and more creative. We
 
 My Personal Fade Candy Project
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qufMyeZC1rk" frameborder="0" allowfullscreen></iframe>
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/qufMyeZC1rk/0.jpg)](http://www.youtube.com/watch?v=qufMyeZC1rk)
 
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/qufMyeZC1rk/0.jpg)](http://www.youtube.com/watch?v=qufMyeZC1rk)
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/1phsNupJlso/0.jpg)](http://www.youtube.com/watch?v=1phsNupJlso)
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/0tr7-VEURN0/0.jpg)](http://www.youtube.com/watch?v=0tr7-VEURN0)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1phsNupJlso" frameborder="0" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0tr7-VEURN0" frameborder="0" allowfullscreen></iframe>
