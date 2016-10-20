@@ -8,11 +8,7 @@ My Personal Fade Candy Project
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/qufMyeZC1rk/0.jpg)](http://www.youtube.com/watch?v=qufMyeZC1rk)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/1phsNupJlso/0.jpg)](http://www.youtube.com/watch?v=1phsNupJlso)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/0tr7-VEURN0/0.jpg)](http://www.youtube.com/watch?v=0tr7-VEURN0)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1phsNupJlso" frameborder="0" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0tr7-VEURN0" frameborder="0" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ytw-6uRW4aE" frameborder="0" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PqErA3lq35Q" frameborder="0" allowfullscreen></iframe>
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/Ytw-6uRW4aE/0.jpg)](http://www.youtube.com/watch?v=Ytw-6uRW4aE)
 
 * [Video Introduction to Fadecandy](https://vimeo.com/79935649)
 * [Introduction by Nick Poole from Spark Fun Electronics](https://www.youtube.com/watch?v=-4AUBjV7Y-w)
