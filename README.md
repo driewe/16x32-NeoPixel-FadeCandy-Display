@@ -2,14 +2,14 @@
 
 Fadecandy is a project that makes LED art easier, tastier, and more creative. We're all about creating tools that remove the technical drudgery from making LED art, freeing you to do more interesting, nuanced, and creative things. We think LEDs are more than just trendy display devices, we think of them as programmable light for interactive art.
 
-My Personal Fade Candy Project
+My Personal Fade Candy Project using eight 8x8 NeoPixel Panels from AdaFruit arranged to form a 16x32 display.
 
-
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/PqErA3lq35Q/0.jpg)](http://www.youtube.com/watch?v=PqErA3lq35Q)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/qufMyeZC1rk/0.jpg)](http://www.youtube.com/watch?v=qufMyeZC1rk)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/1phsNupJlso/0.jpg)](http://www.youtube.com/watch?v=1phsNupJlso)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/0tr7-VEURN0/0.jpg)](http://www.youtube.com/watch?v=0tr7-VEURN0)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/Ytw-6uRW4aE/0.jpg)](http://www.youtube.com/watch?v=Ytw-6uRW4aE)
-
+https://youtu.be/PqErA3lq35Q
 * [Video Introduction to Fadecandy](https://vimeo.com/79935649)
 * [Introduction by Nick Poole from Spark Fun Electronics](https://www.youtube.com/watch?v=-4AUBjV7Y-w)
 * [Tutorial: LED Art with Fadecandy](https://learn.adafruit.com/led-art-with-fadecandy)
