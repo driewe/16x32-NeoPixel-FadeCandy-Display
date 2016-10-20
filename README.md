@@ -9,7 +9,7 @@ My Personal Fade Candy Project using eight 8x8 NeoPixel Panels from AdaFruit arr
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/1phsNupJlso/0.jpg)](http://www.youtube.com/watch?v=1phsNupJlso)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/0tr7-VEURN0/0.jpg)](http://www.youtube.com/watch?v=0tr7-VEURN0)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/Ytw-6uRW4aE/0.jpg)](http://www.youtube.com/watch?v=Ytw-6uRW4aE)
-https://youtu.be/PqErA3lq35Q
+
 * [Video Introduction to Fadecandy](https://vimeo.com/79935649)
 * [Introduction by Nick Poole from Spark Fun Electronics](https://www.youtube.com/watch?v=-4AUBjV7Y-w)
 * [Tutorial: LED Art with Fadecandy](https://learn.adafruit.com/led-art-with-fadecandy)
