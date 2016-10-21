@@ -1,8 +1,6 @@
-![Fadecandy Title](https://raw.github.com/scanlime/fadecandy/master/doc/images/fc-title.png)
-
 Fadecandy is a project that makes LED art easier, tastier, and more creative. We're all about creating tools that remove the technical drudgery from making LED art, freeing you to do more interesting, nuanced, and creative things. We think LEDs are more than just trendy display devices, we think of them as programmable light for interactive art.
 
-My Personal Fade Candy Project using eight 8x8 NeoPixel Panels from AdaFruit arranged to form a 16x32 display.
+This repo was forked and has modifications to fit my personal 16x32 NeoPixel Display that was built using eight 8x8 NeoPixel Panels from AdaFruit arranged to form a 16x32 display. [Click Here for the Original FadeCandy Repo](https://github.com/scanlime/fadecandy)
 
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/PqErA3lq35Q/0.jpg)](http://www.youtube.com/watch?v=PqErA3lq35Q)
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/qufMyeZC1rk/0.jpg)](http://www.youtube.com/watch?v=qufMyeZC1rk)
