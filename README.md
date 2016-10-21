@@ -27,7 +27,7 @@ Simple Example
 
 Here's a simple project, a single LED strip controlled by a Processing sketch running on your laptop:
 
-![Fadecandy system diagram 1](https://raw.github.com/scanlime/fadecandy/master/doc/images/system-diagram-1.png)
+![Fadecandy system diagram 1](https://raw.github.com/driewe/fadecandy/master/doc/images/system-diagram-1.png)
 
 ```
 // Simple Processing sketch for controlling a 64-LED strip.
@@ -65,7 +65,7 @@ A More Complex Example
 
 Fadecandy is also useful for larger projects with many thousands of LEDs, and it's useful for art that runs on embedded computers like the Raspberry Pi:
 
-![Fadecandy system diagram 2](https://raw.github.com/scanlime/fadecandy/master/doc/images/system-diagram-2.png)
+![Fadecandy system diagram 2](https://raw.github.com/driewe/fadecandy/master/doc/images/system-diagram-2.png)
 
 Project Scope
 -------------
@@ -170,7 +170,7 @@ Browser UI
 
 When you run `fcserver`, it also gives you a simple browser-based UI for identifying the attached Fadecandy Controllers and quickly testing your lights. By default, this UI runs on [http://localhost:7890](http://localhost:7890).
 
-![Browser UI Screenshot](https://raw.github.com/scanlime/fadecandy/master/doc/images/web-ui-screenshot.png)
+![Browser UI Screenshot](https://raw.github.com/driewe/fadecandy/master/doc/images/web-ui-screenshot.png)
 
 Where to?
 ---------
